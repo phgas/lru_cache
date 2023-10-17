@@ -16,6 +16,7 @@ To enhance performance, this repository uses memoization via Python's built-in l
 - [Understanding the Code](#understanding-the-code)
 - [Least Recently Used (LRU) Cache](#understanding-the-code)
 - [Big-O Complexity](#Big-O-Complexity)
+- [Problems using lru_cache on instance methods](#Problems-using-lru_cache-on-instance-methods)
 
 ## Prerequisites
 - Python 3.8
@@ -82,3 +83,12 @@ For a more in-depth understanding of the LRU Cache, you can visit: [Interview Ca
 The naive recursive algorithm to calculate fib(n) has a time complexity of $O(2^n)$ due to redundant calculations.
 ### With `lru_cache`
 Using lru_cache, the algorithm's time complexity is reduced to $O(n)$ as each unique Fibonacci number is computed only once and then stored for future use in the cache.
+
+
+## Problems using lru_cache on instance methods
+### Memory Leaks: 
+When you use lru_cache on instance methods, the cache keeps references to the object instances. This means the instances can't be garbage collected even if they're no longer in use, leading to memory leaks.
+### Unexpected Caching Behavior: 
+Each instance of the class has its own set of cached results. Therefore, the cache doesn't work as expected across different instances, leading to inefficiencies. 
+
+If you are interested in possible solutions or want to dive deeper take a look here: [anthonywritescode](https://www.youtube.com/watch?v=sVjtp6tGo0g) 
